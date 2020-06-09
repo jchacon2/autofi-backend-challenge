@@ -1,0 +1,33 @@
+{
+  "name": "autofi-backend-challenge",
+  "version": "1.0.0",
+  "description": "AutoFi backend code challenge",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "tsc && node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jchacon2/autofi-backend-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jchacon2/autofi-backend-challenge/issues"
+  },
+  "homepage": "https://github.com/jchacon2/autofi-backend-challenge#readme",
+  "dependencies": {
+    "@types/express": "^4.17.6",
+    "@types/mongoose": "^5.7.23",
+    "@types/multer": "^1.4.3",
+    "csv-parser": "^2.3.3",
+    "express": "^4.17.1",
+    "mongodb-memory-server": "^6.6.1",
+    "mongoose": "^5.9.18",
+    "multer": "^1.4.2",
+    "typescript": "^3.9.5",
+    "uuidv4": "^6.1.0"
+  }
+}
