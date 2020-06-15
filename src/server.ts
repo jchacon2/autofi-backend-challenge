@@ -1,6 +1,6 @@
 import express from 'express';
 import { CsvFileRoute } from './routes/index';
-import { Mongoose } from 'mongoose';
+import mongoose = require('mongoose');
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
 class Server {
@@ -31,8 +31,8 @@ class Server {
 
   public initMongo(): void {
     const mongoMs = new MongoMemoryServer();
-    const mongoose: Mongoose = new Mongoose();
-    mongoose.Promise = Promise;
+    // mongoose.Promise = Promise;
+    (<any>mongoose).Promise = Promise;
     mongoMs.getUri().then(uri => {
       const options = {
         useNewUrlParser: true,
@@ -46,7 +46,7 @@ class Server {
       });
 
       mongoose.connection.once('open', () => {
-        console.log('mongo memory server connection established...');
+        console.log(`mongo memory server connection established on ${uri}...`);
       });
 
     });

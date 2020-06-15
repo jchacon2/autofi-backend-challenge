@@ -1,4 +1,4 @@
-import { processCsv } from './../services/index';
+import { processCsv , validateRequest, getAll } from './../services/index';
 import { Request, Response } from 'express';
 
 export class CsvFileController {
@@ -6,9 +6,25 @@ export class CsvFileController {
   constructor() {}
 
   public async processCsv(req: Request, res: Response): Promise<void> {
-    console.log('file: ', req['file']);
-    console.log('body: ', req.body);
-    const response = await processCsv('jose', req['file'].path);
+    const {
+      file = { path: '' },
+      body: { providerName = null }
+    } = req;
+    
+    const { path: filePath = null } = file;
+    console.log('file: ', file);
+
+    const checkRequest = validateRequest(providerName, file);
+    if (checkRequest.success) {
+      const response = await processCsv(providerName, filePath);
+      res.json(response);
+    } else {
+      res.json(checkRequest);
+    }
+  }
+
+  public async getAll(req: Request, res: Response): Promise<void> {
+    const response = await getAll();
     res.json(response);
   }
 

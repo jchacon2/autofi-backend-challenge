@@ -1,6 +1,6 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import * as mongoose from 'mongoose';
 
-const CsvSchema: Schema = new Schema({
+export const CsvSchema = new mongoose.Schema({
   UUID: {
     type: String,
     default: 'data not provided'
@@ -43,4 +43,5 @@ const CsvSchema: Schema = new Schema({
   }
 });
 
-export default mongoose.model('Csv', CsvSchema);
+const Csv = mongoose.model('Csv', CsvSchema);
+export default Csv;

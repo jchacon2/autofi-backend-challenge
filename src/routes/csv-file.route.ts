@@ -20,5 +20,6 @@ export class CsvFileRoute {
 
   routes(): void {
     this.router.post('/process-csv', [this.upload.single('file')], this.csvFileController.processCsv);
+    this.router.get('', [], this.csvFileController.getAll);
   }
 }
